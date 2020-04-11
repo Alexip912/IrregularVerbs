@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
+
 void readFromFile(string arr[200][3], string filePath)
 {
     ifstream file(filePath);
@@ -14,6 +15,15 @@ void readFromFile(string arr[200][3], string filePath)
             getline(file,arr[i][j], '\n');
         }
     }
+}
+
+void printInfinitiveForm(string arr[200][3], int n)
+{
+    if(n<200&&n>=0) {
+        cout << "Infinitive form: ";
+        cout << arr[n][0] << endl;
+    }
+    else cout << "Something was wrong."
 }
 
 int main()
