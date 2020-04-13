@@ -17,13 +17,13 @@ void readFromFile(string arr[200][3], string filePath)
     }
 }
 
-void printInfinitiveForm(string arr[200][3], int n)
+void printInfinitiveForm(string const arr[200][3], const int &n)
 {
     if(n<200&&n>=0) {
         cout << "Infinitive form: ";
         cout << arr[n][0] << endl;
     }
-    else cout << "Something was wrong."
+    else cout << "Something was wrong.";
 }
 
 int main()
