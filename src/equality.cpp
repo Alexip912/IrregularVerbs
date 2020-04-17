@@ -1,6 +1,7 @@
-#include <cstring>
+#include <string>
+using namespace std;
 
-int equality_right(const string verbs_array[121][3], int i, int j, const int *array, const string &userVerb, int &Simple, int &Participle, int &right) {
+int equality_right(string const verbs_array[121][3], int i, int j, int const *array, string const &userVerb, int &Simple, int &Participle, int &right) {
     if (verbs_array[array[i]][j] == userVerb) {
         ++right;
         if (j == 1) Simple = 1;
@@ -10,7 +11,7 @@ int equality_right(const string verbs_array[121][3], int i, int j, const int *ar
         return -1;
 }
 
-int equality_wrong(const string verbs_array[121][3], int i, int j, const int *array, const string &userVerb, int &Simple, int &Participle, int &wrong, string &form, string &word) {
+int equality_wrong(string const verbs_array[121][3], int i, int j, int const *array, string const &userVerb, int &Simple, int &Participle, int &wrong, string &form, string &word) {
     if (verbs_array[array[i]][j] != userVerb) {
         ++wrong;
         if (Simple != 1) {

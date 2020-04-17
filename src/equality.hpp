@@ -1,8 +1,8 @@
 #ifndef EQUALITY
 #define EQUALITY
 
-int equality_right(const string verbs_array[121][3], int i, int j, const int *array, const string &userVerb, int &Simple, int &Participle, int &right);
+int equality_right(string const verbs_array[121][3], int i, int j, int const *array, string const &userVerb, int &Simple, int &Participle, int &right);
 
-int equality_wrong(const string verbs_array[121][3], int i, int j, const int *array, const string &userVerb, int &Simple, int &Participle, int &wrong, string &form, string &word);
+int equality_wrong(string const verbs_array[121][3], int i, int j, int const *array, string const &userVerb, int &Simple, int &Participle, int &wrong, string &form, string &word);
 
 #endif
