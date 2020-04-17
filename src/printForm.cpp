@@ -1,6 +1,4 @@
-#include <cstring>
 #include <iostream>
-#include <fstream>
 using namespace std;
 
 void printRandomVerb(const string verbs_array[121][3], int i, const int *array) {
