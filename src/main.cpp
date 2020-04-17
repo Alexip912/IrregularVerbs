@@ -1,7 +1,12 @@
+#include <cstring>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include "readFile.hpp"
 #include "checkVerb.hpp"
 #include "randVerb.hpp"
-#include "readFile.hpp"
-	
+using namespace std;
+
 int main() {
     int number_of_verbs, wrongValue = 0, rightValue = 0;
     cout << "Enter number of verbs to check" << endl;
