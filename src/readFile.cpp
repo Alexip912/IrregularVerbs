@@ -1,5 +1,9 @@
 #include <cstring>
 #include <fstream>
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 void readFromFile(string arr[121][3], const string &filePath) {
     ifstream file(filePath);
