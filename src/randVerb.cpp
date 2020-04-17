@@ -1,4 +1,5 @@
 #include <ctime>
+#include <cstdlib>
 
 void randVerbs(int *array, int size) {
     srand(time(nullptr));
