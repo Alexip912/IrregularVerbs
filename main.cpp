@@ -54,6 +54,16 @@ void printRandomVerbs(const int *array, int size, const string verbs_array[121][
     }
 }
 
+int equality_right(const string verbs_array[121][3], int i, int j, const int *array, const string &userVerb, int &Simple, int &Participle, int &right) {
+    if (verbs_array[array[i]][j] == userVerb) {
+        ++right;
+        if (j == 1) Simple = 1;
+        if (j == 2) Participle = 1;
+        return 1;
+    } else
+        return -1;
+}
+
 int main()
 {	
     int number_of_verbs;
