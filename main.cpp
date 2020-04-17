@@ -97,6 +97,11 @@ void message_wrong(const string verbs_array[121][3], int i, int j, const int *ar
     }
 }
 
+void printForm(const string verbs_array[121][3], int i, int j, const int *array) {
+    if (j == 1) cout << "Past Simple: ";
+    if (j == 2) cout << "Past Participle: ";
+}
+
 void checkVerbs(const int *array, int size, const string verbs_array[121][3], int &wrongValue, int &rightValue) {
     string userVerb, form, word;
     int Simple = 0, Participle = 0, right = 0, wrong = 0;
