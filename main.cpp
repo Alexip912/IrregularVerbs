@@ -25,7 +25,7 @@ void printInfinitiveForm(string const arr[200][3], const int &n)
     else cout << "Something was wrong.";
 }
 
-void fillrand(int *array, int size) {
+void randVerbs(int *array, int size) {
     srand(time(nullptr));
     bool there;
     int element;
