@@ -8,8 +8,8 @@ using namespace std;
 
 Verb irregular_verbs;
 
-string filePath = "res/verbs.txt";
-string file_about = "res/about.txt";
+const string filePath = "res/verbs.txt";
+const string file_about = "res/about.txt";
 
 bool read = irregular_verbs.read_from_file(filePath);
 
@@ -34,7 +34,8 @@ int Join()
             Start(choice);
             break;
         case '2':
-            About(file_about);
+            if(!About(file_about))
+                cout << "\tFile missing" << endl;
             break;
         case '3':
             flag = true;
