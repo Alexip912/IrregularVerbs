@@ -23,13 +23,11 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
 *.lib
 
 # Executables
 *.exe
 *.out
 *.app
-main
 *.swp
-programm
+/bin/*
