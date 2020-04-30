@@ -31,7 +31,7 @@ int Join()
         }
         switch (choice[0]) {
         case '1':
-            Start();
+            Start(choice);
             break;
         case '2':
             About(file_about);
@@ -51,7 +51,7 @@ bool is_valid_choice(const string& choice)
     return !(choice[0] < '1' || choice[0] > '3');
 }
 
-void Start()
+void Start(string& choice)
 {
     string number_of_verbs;
     cout << "Enter number of verbs to check: ";
@@ -68,7 +68,7 @@ void Start()
                  << "Your result: " << irregular_verbs.result(point) << "%"
                  << endl;
             delete[] array_of_number;
-            return;
+            getline(cin, choice);
         } else {
             cout << endl << "\tFile missing" << endl;
             return;

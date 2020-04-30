@@ -5,7 +5,7 @@
 
 int Join();
 bool is_valid_choice(const std::string& choice);
-void Start();
+void Start(std::string choice);
 int is_valid_number(const std::string& number_of_verbs);
 bool About(const std::string& file_about);
 
