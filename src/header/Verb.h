@@ -32,3 +32,5 @@ private:
     void print_form() const;
     void print_random_verb(const int* array);
 };
+
+#endif
