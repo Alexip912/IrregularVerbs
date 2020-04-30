@@ -112,10 +112,10 @@ void Verb::check_verbs(const int* array, int size)
     for (int i = 0; i < size; ++i) {
         index_i = i;
         simple = false, participle = false, right = 0, wrong = 0;
-        printRandomVerb(array);
+        print_random_verb(array);
         for (int j = 1; j < 3; ++j) {
             index_j = j;
-            printForm();
+            print_form();
             cin >> userVerb;
             if (equality_right(array) == 1) {
                 ++right_value;
