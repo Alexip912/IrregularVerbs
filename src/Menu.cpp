@@ -9,6 +9,7 @@ using namespace std;
 Verb irregular_verbs;
 
 string filePath = "res/verbs.txt";
+string file_about = "res/about.txt";
 
 bool read = irregular_verbs.read_from_file(filePath);
 
@@ -33,7 +34,7 @@ int Join()
             Start();
             break;
         case '2':
-            About();
+            About(file_about);
             break;
         case '3':
             flag = true;
@@ -67,7 +68,7 @@ void Start()
                  << "Your result: " << irregular_verbs.result(point) << "%"
                  << endl;
             delete[] array_of_number;
-            getline(cin, choice);
+            return;
         } else {
             cout << endl << "\tFile missing" << endl;
             return;
