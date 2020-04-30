@@ -24,6 +24,7 @@ public:
     void check_verbs(const int* array, int size);
     bool equality_right(const int* array);
     bool equality_wrong(const int* array);
+    int result(int number_of_verbs) const;
 
 private:
     void message_right() const;
