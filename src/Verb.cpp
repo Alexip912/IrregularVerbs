@@ -128,3 +128,14 @@ void Verb::check_verbs(const int* array, int size)
         }
     }
 }
+
+int Verb::result(int number_of_verbs) const
+{
+    if (number_of_verbs == 0) {
+        return 0;
+    } else {
+        int result_right = int(
+                (float(right_value) / (float(number_of_verbs) * 2)) * 100);
+        return result_right;
+    }
+}
