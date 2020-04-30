@@ -49,9 +49,10 @@ bool is_valid_choice(const string& choice)
 
 void Start()
 {
+    string number_of_verbs;
     cout << "Enter number of verbs to check: ";
     getline(cin, number_of_verbs);
-    int point = is_valid_number();
+    int point = is_valid_number(number_of_verbs);
     if (point == 0) {
         return;
     } else {
@@ -68,5 +69,20 @@ void Start()
             cout << endl << "\tFile missing" << endl;
             return;
         }
+    }
+}
+
+int is_valid_number(const string& number_of_verbs)
+{
+    int i = 0, number = 0;
+    while (isdigit(number_of_verbs[i])) {
+        i++;
+    }
+    if (i == int(number_of_verbs.length())) {
+        number = atoi(number_of_verbs.c_str());
+        return number;
+    } else {
+        cout << endl << "Incorrect input!" << endl;
+        return 0;
     }
 }
