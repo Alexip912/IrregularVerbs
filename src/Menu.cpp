@@ -7,6 +7,8 @@ using namespace std;
 
 Verb irregular_verbs;
 
+string filePath = "res/verbs.txt";
+
 bool read = irregular_verbs.read_from_file(filePath);
 
 int Join()
@@ -30,7 +32,7 @@ int Join()
             Start();
             break;
         case '2':
-            about();
+            About();
             break;
         case '3':
             flag = true;
@@ -85,4 +87,21 @@ int is_valid_number(const string& number_of_verbs)
         cout << endl << "Incorrect input!" << endl;
         return 0;
     }
+}
+
+bool About(const string& file_about)
+{
+    cout << endl;
+    ifstream fin;
+    fin.open(file_about);
+    if (!fin.is_open()) {
+        return false;
+    } else {
+        char ch;
+        while (fin.get(ch)) {
+            cout << ch;
+        }
+    }
+    fin.close();
+    return true;
 }
