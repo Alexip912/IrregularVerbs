@@ -34,3 +34,11 @@ int Join()
     }
     return 0;
 }
+
+bool is_valid_choice()
+{
+    if (choice.length() != 1) {
+        return false;
+    }
+    return !(choice[0] < '1' || choice[0] > '3');
+}
