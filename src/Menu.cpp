@@ -34,8 +34,10 @@ int Join()
             Start(choice);
             break;
         case '2':
-            if (!About(file_about)) {
+            if (!check_file(file_about)) {
                 cout << "\tFile missing" << endl;
+            } else {
+                About(file_about);
             }
             break;
         case '3':
@@ -93,19 +95,26 @@ int is_valid_number(const string& number_of_verbs)
     }
 }
 
-bool About(const string& file_about)
+bool check_file(const string& file_about)
 {
-    cout << endl;
     ifstream fin;
     fin.open(file_about);
     if (!fin.is_open()) {
         return false;
     } else {
-        char ch;
-        while (fin.get(ch)) {
-            cout << ch;
-        }
+        fin.close();
+        return true;
+    }
+}
+
+void About(const string& file_about)
+{
+    cout << endl;
+    ifstream fin;
+    fin.open(file_about);
+    char ch;
+    while (fin.get(ch)) {
+        cout << ch;
     }
     fin.close();
-    return true;
 }
