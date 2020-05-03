@@ -35,3 +35,10 @@ TEST(CHOICE, IsNotChoice)
     ASSERT_EQ(false, is_valid_choice("!"));
     ASSERT_EQ(false, is_valid_choice("."));
 }
+
+TEST(NUMBER, IsNumber)
+{
+    ASSERT_EQ(0, is_valid_number("0"));
+    ASSERT_EQ(12345, is_valid_number("12345"));
+    ASSERT_EQ(8, is_valid_number("8"));
+}
