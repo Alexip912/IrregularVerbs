@@ -20,13 +20,13 @@ int Join()
     cout << "Welcome to IrregularVerbs" << endl;
     cout << "It's time to test your knowledge of irregular verbs" << endl;
     while (!flag) {
-        cout << std::endl << "1.Begin to test your knowledge" << endl;
+        cout << endl << "1.Begin to test your knowledge" << endl;
         cout << "2.About program's" << endl;
         cout << "3.Exit" << endl;
         cout << endl << "Your choice: ";
         getline(cin, choice);
         if (!is_valid_choice(choice)) {
-            cout << "Incorrect input!" << endl;
+            cout << endl << "Incorrect input!" << endl;
             continue;
         }
         switch (choice[0]) {
@@ -34,8 +34,10 @@ int Join()
             Start(choice);
             break;
         case '2':
-            if (!About(file_about)) {
+            if (!check_file(file_about)) {
                 cout << "\tFile missing" << endl;
+            } else {
+                About(file_about);
             }
             break;
         case '3':
@@ -60,6 +62,7 @@ void Start(string& choice)
     getline(cin, number_of_verbs);
     int point = is_valid_number(number_of_verbs);
     if (point == 0) {
+        cout << endl << "Incorrect input!" << endl;
         return;
     } else {
         if (read) {
@@ -88,24 +91,30 @@ int is_valid_number(const string& number_of_verbs)
         number = atoi(number_of_verbs.c_str());
         return number;
     } else {
-        cout << endl << "Incorrect input!" << endl;
         return 0;
     }
 }
 
-bool About(const string& file_about)
+bool check_file(const string& file_about)
 {
-    cout << endl;
     ifstream fin;
     fin.open(file_about);
     if (!fin.is_open()) {
         return false;
     } else {
-        char ch;
-        while (fin.get(ch)) {
-            cout << ch;
-        }
+        fin.close();
+        return true;
+    }
+}
+
+void About(const string& file_about)
+{
+    cout << endl;
+    ifstream fin;
+    fin.open(file_about);
+    char ch;
+    while (fin.get(ch)) {
+        cout << ch;
     }
     fin.close();
-    return true;
 }

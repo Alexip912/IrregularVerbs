@@ -133,11 +133,31 @@ void Verb::check_verbs(const int* array, int size)
 
 int Verb::result(int number_of_verbs) const
 {
-    if (number_of_verbs == 0) {
+    if (number_of_verbs <= 0) {
         return 0;
     } else {
         int result_right = int(
                 (float(right_value) / (float(number_of_verbs) * 2)) * 100);
         return result_right;
     }
+}
+
+void Verb::Set_user_verb(string verb)
+{
+    userVerb = verb;
+}
+
+void Verb::Set_index_i(int i)
+{
+    index_i = i;
+}
+
+void Verb::Set_index_j(int j)
+{
+    index_j = j;
+}
+
+void Verb::Set_right_value(int value)
+{
+    right_value = value;
 }

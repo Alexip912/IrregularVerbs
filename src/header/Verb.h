@@ -24,6 +24,10 @@ public:
     bool equality_right(const int* array);
     bool equality_wrong(const int* array);
     int result(int number_of_verbs) const;
+    void Set_user_verb(std::string verb);
+    void Set_index_i(int i);
+    void Set_index_j(int j);
+    void Set_right_value(int value);
 
 private:
     void message_right() const;
