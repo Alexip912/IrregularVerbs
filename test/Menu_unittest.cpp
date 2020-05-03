@@ -6,6 +6,13 @@ using namespace std;
 
 TEST(ABOUT, IsAbout)
 {
-    string file_about = "res/about.txt";
-    ASSERT_EQ(true, check_file(file_about));
+    ASSERT_EQ(true, check_file("res/about.txt"));
+}
+
+TEST(ABOUT, IsNotAbout)
+{
+    ASSERT_EQ(false, check_file(""));
+    ASSERT_EQ(false, check_file("fhhfhjfjf.txt"));
+    ASSERT_EQ(false, check_file("235456.txt"));
+    ASSERT_EQ(false, check_file("home/about.txt"));
 }
