@@ -133,7 +133,7 @@ void Verb::check_verbs(const int* array, int size)
 
 int Verb::result(int number_of_verbs) const
 {
-    if (number_of_verbs == 0) {
+    if (number_of_verbs <= 0) {
         return 0;
     } else {
         int result_right = int(
