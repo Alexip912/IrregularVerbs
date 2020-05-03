@@ -114,3 +114,14 @@ TEST(RESULT, IsResult)
     test.Set_right_value(1);
     ASSERT_EQ(25, test.result(2));
 }
+
+TEST(RESULT, IsNotResult)
+{
+    Verb test;
+    test.Set_right_value(10);
+    ASSERT_EQ(0, test.result(0));
+    test.Set_right_value(2);
+    ASSERT_EQ(0, test.result(-5));
+    test.Set_right_value(1);
+    ASSERT_EQ(0, test.result(-25));
+}
