@@ -90,3 +90,16 @@ TEST(READ_FROM_FILE, IsRead)
     string filePath = "res/verbs.txt";
     ASSERT_EQ(true, test.read_from_file(filePath));
 }
+
+TEST(READ_FROM_FILE, IsNotRead)
+{
+    Verb test;
+    string filePath = "";
+    ASSERT_EQ(false, test.read_from_file(filePath));
+    filePath = "hfjhfjhf.txt";
+    ASSERT_EQ(false, test.read_from_file(filePath));
+    filePath = "1234.txt";
+    ASSERT_EQ(false, test.read_from_file(filePath));
+    filePath = "home/verbs.txt";
+    ASSERT_EQ(false, test.read_from_file(filePath));
+}
