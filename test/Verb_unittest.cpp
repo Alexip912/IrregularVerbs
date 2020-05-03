@@ -103,3 +103,14 @@ TEST(READ_FROM_FILE, IsNotRead)
     filePath = "home/verbs.txt";
     ASSERT_EQ(false, test.read_from_file(filePath));
 }
+
+TEST(RESULT, IsResult)
+{
+    Verb test;
+    test.Set_right_value(1);
+    ASSERT_EQ(50, test.result(1));
+    test.Set_right_value(2);
+    ASSERT_EQ(100, test.result(1));
+    test.Set_right_value(1);
+    ASSERT_EQ(25, test.result(2));
+}
