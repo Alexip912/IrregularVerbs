@@ -49,8 +49,9 @@ bool Verb::equality_right(const int* array)
         if (index_j == 2)
             participle = true;
         return true;
-    } else
-        return true;
+    } else {
+        return false;
+    }
 }
 bool Verb::equality_wrong(const int* array)
 {
@@ -65,8 +66,9 @@ bool Verb::equality_wrong(const int* array)
             word = array_of_verbs[array[index_i]][2];
         }
         return true;
-    } else
+    } else {
         return false;
+    }
 }
 void Verb::message_right() const
 {
@@ -92,10 +94,12 @@ void Verb::message_wrong(const int* array)
 
 void Verb::print_form() const
 {
-    if (index_j == 1)
+    if (index_j == 1) {
         cout << "Past Simple: ";
-    if (index_j == 2)
+    }
+    if (index_j == 2) {
         cout << "Past Participle: ";
+    }
 }
 void Verb::print_random_verb(const int* array)
 {
@@ -117,13 +121,11 @@ void Verb::check_verbs(const int* array, int size)
             index_j = j;
             print_form();
             cin >> userVerb;
-            if (equality_right(array) == 1) {
+            if (equality_right(array)) {
                 ++right_value;
             }
-            (message_right());
-            if (equality_wrong(array) == 1) {
-                ++wrong_value;
-            }
+            message_right();
+            equality_wrong(array);
             message_wrong(array);
         }
     }

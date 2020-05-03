@@ -34,8 +34,9 @@ int Join()
             Start(choice);
             break;
         case '2':
-            if(!About(file_about))
+            if (!About(file_about)) {
                 cout << "\tFile missing" << endl;
+            }
             break;
         case '3':
             flag = true;
