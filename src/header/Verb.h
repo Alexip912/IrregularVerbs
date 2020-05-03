@@ -15,7 +15,6 @@ private:
     int wrong{};
     int index_i{};
     int index_j{};
-    int wrong_value{};
     int right_value{};
 
 public:
