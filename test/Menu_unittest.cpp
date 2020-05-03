@@ -42,3 +42,13 @@ TEST(NUMBER, IsNumber)
     ASSERT_EQ(12345, is_valid_number("12345"));
     ASSERT_EQ(8, is_valid_number("8"));
 }
+
+TEST(NUMBER, IsNotNumber)
+{
+    ASSERT_EQ(0, is_valid_number(""));
+    ASSERT_EQ(0, is_valid_number("-1"));
+    ASSERT_EQ(0, is_valid_number("fd"));
+    ASSERT_EQ(0, is_valid_number("4gfjf"));
+    ASSERT_EQ(0, is_valid_number("!"));
+    ASSERT_EQ(0, is_valid_number("."));
+}
