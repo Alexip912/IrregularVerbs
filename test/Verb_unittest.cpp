@@ -83,3 +83,10 @@ TEST(EQUALITY_WRONG, IsNotWrong)
     test.Set_index_j(1);
     ASSERT_EQ(false, test.equality_wrong(array_for_test));
 }
+
+TEST(READ_FROM_FILE, IsRead)
+{
+    Verb test;
+    string filePath = "res/verbs.txt";
+    ASSERT_EQ(true, test.read_from_file(filePath));
+}
