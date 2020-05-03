@@ -141,3 +141,23 @@ int Verb::result(int number_of_verbs) const
         return result_right;
     }
 }
+
+void Verbs::Set_user_verb(string verb)
+{
+    userVerb = verb;
+}
+
+void Verbs::Set_index_i(int i)
+{
+    index_i = i;
+}
+
+void Verbs::Set_index_j(int j)
+{
+    index_j = j;
+}
+
+void Verbs::Set_right_value(int value)
+{
+    right_value = value;
+}
