@@ -23,3 +23,15 @@ TEST(CHOICE, IsChoice)
     ASSERT_EQ(true, is_valid_choice("2"));
     ASSERT_EQ(true, is_valid_choice("3"));
 }
+
+TEST(CHOICE, IsNotChoice)
+{
+    ASSERT_EQ(false, is_valid_choice(""));
+    ASSERT_EQ(false, is_valid_choice("222"));
+    ASSERT_EQ(false, is_valid_choice("fghfghfh"));
+    ASSERT_EQ(false, is_valid_choice("f"));
+    ASSERT_EQ(false, is_valid_choice("2d"));
+    ASSERT_EQ(false, is_valid_choice("1235448"));
+    ASSERT_EQ(false, is_valid_choice("!"));
+    ASSERT_EQ(false, is_valid_choice("."));
+}
