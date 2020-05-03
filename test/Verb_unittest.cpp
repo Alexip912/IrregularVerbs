@@ -8,8 +8,7 @@ TEST(EQUALITY_RIGHT, IsRight)
 {
     int array_for_test[3] = {0, 1, 2};
     Verb test;
-    string filePath = "res/verbs.txt";
-    test.read_from_file(filePath);
+    test.read_from_file("res/verbs.txt");
     test.Set_user_verb("arise");
     test.Set_index_i(0);
     test.Set_index_j(0);
@@ -28,8 +27,7 @@ TEST(EQUALITY_RIGHT, IsNotRight)
 {
     int array_for_test[3] = {0, 1, 2};
     Verb test;
-    string filePath = "res/verbs.txt";
-    test.read_from_file(filePath);
+    test.read_from_file("res/verbs.txt");
     test.Set_user_verb("hjfhjfhjf");
     test.Set_index_i(0);
     test.Set_index_j(0);
@@ -48,8 +46,7 @@ TEST(EQUALITY_WRONG, IsWrong)
 {
     int array_for_test[3] = {0, 1, 2};
     Verb test;
-    string filePath = "res/verbs.txt";
-    test.read_from_file(filePath);
+    test.read_from_file("res/verbs.txt");
     test.Set_user_verb("be");
     test.Set_index_i(0);
     test.Set_index_j(0);
@@ -68,8 +65,7 @@ TEST(EQUALITY_WRONG, IsNotWrong)
 {
     int array_for_test[3] = {0, 1, 2};
     Verb test;
-    string filePath = "res/verbs.txt";
-    test.read_from_file(filePath);
+    test.read_from_file("res/verbs.txt");
     test.Set_user_verb("arose");
     test.Set_index_i(0);
     test.Set_index_j(1);
@@ -87,21 +83,16 @@ TEST(EQUALITY_WRONG, IsNotWrong)
 TEST(READ_FROM_FILE, IsRead)
 {
     Verb test;
-    string filePath = "res/verbs.txt";
-    ASSERT_EQ(true, test.read_from_file(filePath));
+    ASSERT_EQ(true, test.read_from_file("res/verbs.txt"));
 }
 
 TEST(READ_FROM_FILE, IsNotRead)
 {
     Verb test;
-    string filePath = "";
-    ASSERT_EQ(false, test.read_from_file(filePath));
-    filePath = "hfjhfjhf.txt";
-    ASSERT_EQ(false, test.read_from_file(filePath));
-    filePath = "1234.txt";
-    ASSERT_EQ(false, test.read_from_file(filePath));
-    filePath = "home/verbs.txt";
-    ASSERT_EQ(false, test.read_from_file(filePath));
+    ASSERT_EQ(false, test.read_from_file(""));
+    ASSERT_EQ(false, test.read_from_file("hfjhfjhf.txt"));
+    ASSERT_EQ(false, test.read_from_file("1234.txt"));
+    ASSERT_EQ(false, test.read_from_file("home/verbs.txt"));
 }
 
 TEST(RESULT, IsResult)
