@@ -20,13 +20,13 @@ int Join()
     cout << "Welcome to IrregularVerbs" << endl;
     cout << "It's time to test your knowledge of irregular verbs" << endl;
     while (!flag) {
-        cout << std::endl << "1.Begin to test your knowledge" << endl;
+        cout << endl << "1.Begin to test your knowledge" << endl;
         cout << "2.About program's" << endl;
         cout << "3.Exit" << endl;
         cout << endl << "Your choice: ";
         getline(cin, choice);
         if (!is_valid_choice(choice)) {
-            cout << "Incorrect input!" << endl;
+            cout << endl << "Incorrect input!" << endl;
             continue;
         }
         switch (choice[0]) {
@@ -62,6 +62,7 @@ void Start(string& choice)
     getline(cin, number_of_verbs);
     int point = is_valid_number(number_of_verbs);
     if (point == 0) {
+        cout << endl << "Incorrect input!" << endl;
         return;
     } else {
         if (read) {
@@ -90,7 +91,6 @@ int is_valid_number(const string& number_of_verbs)
         number = atoi(number_of_verbs.c_str());
         return number;
     } else {
-        cout << endl << "Incorrect input!" << endl;
         return 0;
     }
 }
