@@ -6,12 +6,8 @@
 
 using namespace std;
 
-Verb irregular_verbs;
-
 const string filePath = "res/verbs.txt";
 const string file_about = "res/about.txt";
-
-bool read = irregular_verbs.read_from_file(filePath);
 
 int Join()
 {
@@ -65,6 +61,9 @@ void Start(string& choice)
         cout << endl << "Incorrect input!" << endl;
         return;
     } else {
+        Verb irregular_verbs;
+        bool read;
+        read = irregular_verbs.read_from_file(filePath);
         if (read) {
             int* array_of_number = new int[point];
             Verb::rand_verbs(array_of_number, point);
