@@ -1,8 +1,8 @@
 #ifndef MENU
 #define MENU
 
-#define FILE_VERBS "verbs.txt"
-#define FILE_ABOUT "about.txt"
+#define FILE_VERBS "res/verbs.txt"
+#define FILE_ABOUT "res/about.txt"
 
 #include <string>
 
