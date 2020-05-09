@@ -6,34 +6,32 @@
 
 using namespace std;
 
-const string filePath = "res/verbs.txt";
-const string file_about = "res/about.txt";
-
-int Join()
+int join()
 {
     bool flag = false;
     string choice;
-    cout << "Welcome to IrregularVerbs" << endl;
-    cout << "It's time to test your knowledge of irregular verbs" << endl;
+    cout << "Welcome to IrregularVerbs\n";
+    cout << "It's time to test your knowledge of irregular verbs\n";
     while (!flag) {
-        cout << endl << "1.Begin to test your knowledge" << endl;
-        cout << "2.About program's" << endl;
-        cout << "3.Exit" << endl;
-        cout << endl << "Your choice: ";
-        getline(cin, choice);
+        cout << "\n1.Begin to test your knowledge\n";
+        cout << "2.About program's\n";
+        cout << "3.Exit\n";
+        cout << "\nYour choice: ";
+        cin >> choice;
         if (!is_valid_choice(choice)) {
-            cout << endl << "Incorrect input!" << endl;
+            cout << "\nIncorrect input!\n";
             continue;
         }
         switch (choice[0]) {
         case '1':
-            Start(choice);
+            start();
             break;
         case '2':
-            if (!check_file(file_about)) {
-                cout << "\tFile missing" << endl;
+            if (!check_file(FILE_ABOUT)) {
+                cout << "\tFile missing\n";
             } else {
-                About(file_about);
+                cout << "\n";
+                about(FILE_ABOUT);
             }
             break;
         case '3':
@@ -51,66 +49,57 @@ bool is_valid_choice(const string& choice)
     return !(choice[0] < '1' || choice[0] > '3');
 }
 
-void Start(string& choice)
+bool is_valid_number(const string& number_of_verbs)
 {
-    string number_of_verbs;
-    cout << "Enter number of verbs to check: ";
-    getline(cin, number_of_verbs);
-    int point = is_valid_number(number_of_verbs);
-    if (point == 0) {
-        cout << endl << "Incorrect input!" << endl;
-        return;
-    } else {
-        Verb irregular_verbs;
-        bool read;
-        read = irregular_verbs.read_from_file(filePath);
-        if (read) {
-            int* array_of_number = new int[point];
-            Verb::rand_verbs(array_of_number, point);
-            irregular_verbs.check_verbs(array_of_number, point);
-            cout << endl
-                 << "Your result: " << irregular_verbs.result(point) << "%"
-                 << endl;
-            delete[] array_of_number;
-            getline(cin, choice);
-        } else {
-            cout << endl << "\tFile missing" << endl;
-            return;
+    for (char number_of_verb : number_of_verbs) {
+        if (!isdigit(number_of_verb)) {
+            return false;
         }
     }
+    return true;
 }
 
-int is_valid_number(const string& number_of_verbs)
+int string_to_number(const string& number_of_verbs)
 {
-    int i = 0, number = 0;
-    while (isdigit(number_of_verbs[i])) {
-        i++;
-    }
-    if (i == int(number_of_verbs.length())) {
-        number = atoi(number_of_verbs.c_str());
+    int number;
+    if (is_valid_number(number_of_verbs)) {
+        number = stoi(number_of_verbs);
         return number;
+    }
+    return 0;
+}
+
+void start()
+{
+    int right_value = 0;
+    string number_of_verbs;
+    cout << "Enter number of verbs to check: ";
+    cin >> number_of_verbs;
+    int point = string_to_number(number_of_verbs);
+    if (point == 0) {
+        cout << "\nIncorrect input!\n";
+    } else if (!read_from_file(FILE_VERBS)) {
+        cout << "\n\tFile missing\n";
     } else {
-        return 0;
+        DataOfCurrentVerb object;
+        int array_of_number[point];
+        rand_verbs(array_of_number, point);
+        right_value = check_verbs(array_of_number, point, object);
+        cout << "\nYour result: " << result(point, right_value) << "%\n";
     }
 }
 
-bool check_file(const string& file_about)
+bool check_file(const string& file)
 {
     ifstream fin;
-    fin.open(file_about);
-    if (!fin.is_open()) {
-        return false;
-    } else {
-        fin.close();
-        return true;
-    }
+    fin.open(file);
+    return fin.is_open();
 }
 
-void About(const string& file_about)
+void about(const string& file)
 {
-    cout << endl;
     ifstream fin;
-    fin.open(file_about);
+    fin.open(file);
     char ch;
     while (fin.get(ch)) {
         cout << ch;
