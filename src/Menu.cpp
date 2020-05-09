@@ -28,7 +28,7 @@ int join()
             break;
         case '2':
             if (!check_file(FILE_ABOUT)) {
-                cout << "\tFile missing\n";
+                cout << "\n\tFile missing\n";
             } else {
                 cout << "\n";
                 about(FILE_ABOUT);
