@@ -8,6 +8,9 @@ typedef struct {
     std::string form;
 } DataOfCurrentVerb;
 
+extern bool simple, participle;
+extern std::string array_of_verbs[121][3];
+
 bool read_from_file(const std::string& filePath);
 void rand_verbs(int* array, const int& size);
 int check_verbs(const int* array, const int& size, DataOfCurrentVerb& object);
