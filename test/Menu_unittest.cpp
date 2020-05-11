@@ -52,3 +52,16 @@ TEST(NUMBER, IsNotNumber)
     ASSERT_EQ(0, is_valid_number("!"));
     ASSERT_EQ(0, is_valid_number("."));
 }
+
+TEST(CHECK_FILE, IsRead)
+{
+    ASSERT_EQ(true, check_file("res/about.txt"));
+}
+
+TEST(CHECK_FILE, IsNotRead)
+{
+    ASSERT_EQ(false, check_file(""));
+    ASSERT_EQ(false, check_file("hfjhfjhf.txt"));
+    ASSERT_EQ(false, check_file("1234.txt"));
+    ASSERT_EQ(false, check_file("home/verbs.txt"));
+}
