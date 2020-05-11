@@ -54,6 +54,9 @@ bool is_valid_choice(const string& choice)
 
 bool is_valid_number(const string& number_of_verbs)
 {
+    if (number_of_verbs == "") {
+        return false;
+    }
     for (char number_of_verb : number_of_verbs) {
         if (!isdigit(number_of_verb)) {
             return false;
