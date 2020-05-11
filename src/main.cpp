@@ -2,6 +2,6 @@
 
 int main()
 {
-    Join();
+    join();
     return 0;
 }

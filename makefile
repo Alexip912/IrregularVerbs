@@ -1,13 +1,13 @@
-FLAGS = -Wall -Werror --std=c++17
+FLAGS += -Wall -Werror --std=c++17
 USER_DIR_S = build/src
 USER_DIR_T = build/test
 EXECUTABLE = bin/program
 TEST = bin/test
 GOOGLE_TEST_DIR = thirdparty/googletest
 GOOGLE_TEST_INCLUDE = thirdparty/googletest/include
-LD_FLAGS = -L $(GOOGLE_TEST_DIR)/lib -l gtest_main -l pthread
+LD_FLAGS += -L $(GOOGLE_TEST_DIR)/lib -l gtest_main -l pthread
 
-.PHONY: all clean
+.PHONY: all clean start
 
 all: $(EXECUTABLE) $(TEST)
 
