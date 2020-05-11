@@ -10,21 +10,18 @@ using namespace std;
 bool simple{}, participle{};
 std::string array_of_verbs[121][3];
 
-bool read_from_file(const string& file_path)
+void read_from_file(const string& file_path)
 {
     ifstream file(file_path);
-    if (file.is_open()) {
-        for (auto& array_of_verb : array_of_verbs) {
-            for (int j = 0; j < 3; j++) {
-                getline(file, array_of_verb[j], ' ');
-                j++;
-                getline(file, array_of_verb[j], ' ');
-                j++;
-                getline(file, array_of_verb[j], '\n');
-            }
+    for (auto& array_of_verb : array_of_verbs) {
+        for (int j = 0; j < 3; j++) {
+            getline(file, array_of_verb[j], ' ');
+            j++;
+            getline(file, array_of_verb[j], ' ');
+            j++;
+            getline(file, array_of_verb[j], '\n');
         }
     }
-    return file.is_open();
 }
 
 void rand_verbs(int* array, const int& size)
@@ -85,37 +82,9 @@ void print_random_verb(const int& index)
     cout << "\nInput other form\n";
 }
 
-int check_verbs(const int* array, const int& size, DataOfCurrentVerb& object)
+bool check_verbs(const string& reference_verb, const string& user_verb)
 {
-    int right_value = 0;
-    string user_verb;
-    for (int i = 0; i < size; ++i) {
-        simple = false, participle = false;
-        print_random_verb(array[i]);
-        for (int j = 1; j < 3; ++j) {
-            print_form(j);
-            cin >> user_verb;
-            if (array_of_verbs[array[i]][j] == user_verb) {
-                if (j == 1)
-                    simple = true;
-                if (j == 2)
-                    participle = true;
-                ++right_value;
-            } else {
-                if (j == 1) {
-                    object.form = "Past Simple";
-                    object.word = array_of_verbs[array[i]][j];
-                }
-                if (j == 2) {
-                    object.form = "Past Participle";
-                    object.word = array_of_verbs[array[i]][j];
-                }
-            }
-        }
-        message_right();
-        message_wrong(array[i], object);
-    }
-    return right_value;
+    return reference_verb == user_verb;
 }
 
 int result(const int& number_of_verbs, const int& right_value)
