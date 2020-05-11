@@ -24,13 +24,16 @@ int join()
         }
         switch (choice[0]) {
         case '1':
-            start();
+            if (!check_file(FILE_VERBS)) {
+                cout << "\n\tFile missing\n";
+            } else {
+                start();
+            }
             break;
         case '2':
             if (!check_file(FILE_ABOUT)) {
                 cout << "\n\tFile missing\n";
             } else {
-                cout << "\n";
                 about(FILE_ABOUT);
             }
             break;
@@ -78,13 +81,36 @@ void start()
     int point = string_to_number(number_of_verbs);
     if (point == 0) {
         cout << "\nIncorrect input!\n";
-    } else if (!read_from_file(FILE_VERBS)) {
-        cout << "\n\tFile missing\n";
     } else {
+        read_from_file(FILE_VERBS);
         DataOfCurrentVerb object;
         int array_of_number[point];
         rand_verbs(array_of_number, point);
-        right_value = check_verbs(array_of_number, point, object);
+        string user_verb;
+        for (int i = 0; i < point; ++i) {
+            simple = false, participle = false;
+            print_random_verb(array_of_number[i]);
+            print_form(1);
+            cin >> user_verb;
+            if (check_verbs(array_of_verbs[array_of_number[i]][1], user_verb)) {
+                simple = true;
+                ++right_value;
+            } else {
+                object.form = "Past Simple";
+                object.word = array_of_verbs[array_of_number[i]][1];
+            }
+            print_form(2);
+            cin >> user_verb;
+            if (check_verbs(array_of_verbs[array_of_number[i]][2], user_verb)) {
+                participle = true;
+                ++right_value;
+            } else {
+                object.form = "Past Participle";
+                object.word = array_of_verbs[array_of_number[i]][2];
+            }
+            message_right();
+            message_wrong(array_of_number[i], object);
+        }
         cout << "\nYour result: " << result(point, right_value) << "%\n";
     }
 }
@@ -98,6 +124,7 @@ bool check_file(const string& file)
 
 void about(const string& file)
 {
+    cout << "\n";
     ifstream fin;
     fin.open(file);
     char ch;
