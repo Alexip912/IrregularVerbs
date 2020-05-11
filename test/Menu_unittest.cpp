@@ -4,19 +4,6 @@
 
 using namespace std;
 
-TEST(ABOUT, IsAbout)
-{
-    ASSERT_EQ(true, check_file("res/about.txt"));
-}
-
-TEST(ABOUT, IsNotAbout)
-{
-    ASSERT_EQ(false, check_file(""));
-    ASSERT_EQ(false, check_file("fhhfhjfjf.txt"));
-    ASSERT_EQ(false, check_file("235456.txt"));
-    ASSERT_EQ(false, check_file("home/about.txt"));
-}
-
 TEST(CHOICE, IsChoice)
 {
     ASSERT_EQ(true, is_valid_choice("1"));
@@ -38,19 +25,19 @@ TEST(CHOICE, IsNotChoice)
 
 TEST(NUMBER, IsNumber)
 {
-    ASSERT_EQ(0, is_valid_number("0"));
-    ASSERT_EQ(12345, is_valid_number("12345"));
-    ASSERT_EQ(8, is_valid_number("8"));
+    ASSERT_EQ(true, is_valid_number("0"));
+    ASSERT_EQ(true, is_valid_number("12345"));
+    ASSERT_EQ(true, is_valid_number("8"));
 }
 
 TEST(NUMBER, IsNotNumber)
 {
-    ASSERT_EQ(0, is_valid_number(""));
-    ASSERT_EQ(0, is_valid_number("-1"));
-    ASSERT_EQ(0, is_valid_number("fd"));
-    ASSERT_EQ(0, is_valid_number("4gfjf"));
-    ASSERT_EQ(0, is_valid_number("!"));
-    ASSERT_EQ(0, is_valid_number("."));
+    ASSERT_EQ(false, is_valid_number(""));
+    ASSERT_EQ(false, is_valid_number("-1"));
+    ASSERT_EQ(false, is_valid_number("fd"));
+    ASSERT_EQ(false, is_valid_number("4gfjf"));
+    ASSERT_EQ(false, is_valid_number("!"));
+    ASSERT_EQ(false, is_valid_number("."));
 }
 
 TEST(CHECK_FILE, IsRead)
@@ -64,4 +51,22 @@ TEST(CHECK_FILE, IsNotRead)
     ASSERT_EQ(false, check_file("hfjhfjhf.txt"));
     ASSERT_EQ(false, check_file("1234.txt"));
     ASSERT_EQ(false, check_file("home/verbs.txt"));
+}
+
+TEST(STONUM, IsNotNull)
+{
+    ASSERT_EQ(1, string_to_number("1"));
+    ASSERT_EQ(2222, string_to_number("2222"));
+    ASSERT_EQ(33584, string_to_number("33584"));
+}
+
+TEST(STONUM, IsNull)
+{
+    ASSERT_EQ(0, string_to_number(""));
+    ASSERT_EQ(0, string_to_number("-1"));
+    ASSERT_EQ(0, string_to_number("fd"));
+    ASSERT_EQ(0, string_to_number("4gfjf"));
+    ASSERT_EQ(0, string_to_number("!"));
+    ASSERT_EQ(0, string_to_number("."));
+    ASSERT_EQ(0, string_to_number("0"));
 }
