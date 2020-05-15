@@ -24,10 +24,13 @@
 *.lai
 *.la
 *.lib
+*.a
 
 # Executables
 *.exe
 *.out
 *.app
 *.swp
-/bin/*
+bin/*
+thirdparty/googletest/include/*
+thirdparty/googletest/*
