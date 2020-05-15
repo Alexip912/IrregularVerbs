@@ -6,16 +6,16 @@ using namespace std;
 
 TEST(CHECK, IsRight)
 {
-    ASSERT_EQ(true, check_verbs("be", "be"));
-    ASSERT_EQ(true, check_verbs("was", "was"));
-    ASSERT_EQ(true, check_verbs("been", "been"));
+    ASSERT_EQ(1, check_verbs("be", "be"));
+    ASSERT_EQ(1, check_verbs("was", "was"));
+    ASSERT_EQ(1, check_verbs("been", "been"));
 }
 
 TEST(CHECK, IsWrong)
 {
-    ASSERT_EQ(false, check_verbs("be", "can"));
-    ASSERT_EQ(false, check_verbs("be", "was"));
-    ASSERT_EQ(false, check_verbs("been", "was"));
+    ASSERT_EQ(0, check_verbs("be", "can"));
+    ASSERT_EQ(0, check_verbs("be", "was"));
+    ASSERT_EQ(0, check_verbs("been", "was"));
 }
 
 TEST(RESULT, IsResult)
