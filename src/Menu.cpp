@@ -77,7 +77,6 @@ int string_to_number(const string& number_of_verbs)
 
 void start()
 {
-    int right_value = 0;
     string number_of_verbs;
     cout << "Enter number of verbs to check: ";
     cin >> number_of_verbs;
@@ -85,34 +84,34 @@ void start()
     if (point == 0) {
         cout << "\nIncorrect input!\n";
     } else {
-        read_from_file(FILE_VERBS);
-        DataOfCurrentVerb object;
+        int right_value = 0;
+        vector<FormsOfVerb> array_of_verbs;
+        array_of_verbs.resize(121);
+        read_from_file(FILE_VERBS, array_of_verbs);
         int array_of_number[point];
         rand_verbs(array_of_number, point);
         string user_verb;
         for (int i = 0; i < point; ++i) {
-            simple = false, participle = false;
-            print_random_verb(array_of_number[i]);
+            print_random_verb(array_of_verbs[array_of_number[i]]);
             print_form(1);
             cin >> user_verb;
-            if (check_verbs(array_of_verbs[array_of_number[i]][1], user_verb)) {
-                simple = true;
+            if (check_verbs(
+                        array_of_verbs[array_of_number[i]].simple, user_verb)) {
                 ++right_value;
             } else {
-                object.form = "Past Simple";
-                object.word = array_of_verbs[array_of_number[i]][1];
+                array_of_verbs[array_of_number[i]].simple_flag = false;
             }
             print_form(2);
             cin >> user_verb;
-            if (check_verbs(array_of_verbs[array_of_number[i]][2], user_verb)) {
-                participle = true;
+            if (check_verbs(
+                        array_of_verbs[array_of_number[i]].participle,
+                        user_verb)) {
                 ++right_value;
             } else {
-                object.form = "Past Participle";
-                object.word = array_of_verbs[array_of_number[i]][2];
+                array_of_verbs[array_of_number[i]].participle_flag = false;
             }
-            message_right();
-            message_wrong(array_of_number[i], object);
+            message_right(array_of_verbs[array_of_number[i]]);
+            message_wrong(array_of_verbs[array_of_number[i]]);
         }
         cout << "\nYour result: " << result(point, right_value) << "%\n";
     }
