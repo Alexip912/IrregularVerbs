@@ -3,35 +3,58 @@ USER_DIR_S = build/src
 USER_DIR_T = build/test
 EXECUTABLE = bin/program
 TEST = bin/test
-GOOGLE_TEST_DIR = thirdparty/googletest
+
+.PHONY: all clean start addDir
+
+GTEST_DIR = thirdparty/googletest
+
 GOOGLE_TEST_INCLUDE = thirdparty/googletest/include
-LD_FLAGS += -L $(GOOGLE_TEST_DIR)/lib -l gtest_main -l pthread
 
-.PHONY: all clean start
+GFLAGS += -isystem $(GTEST_DIR)/include
 
-all: $(EXECUTABLE) $(TEST)
+LDFLAGS += -Wall -Wextra -pthread --std=c++17
+
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
+
+all: addDir $(EXECUTABLE) $(TEST)
 
 $(EXECUTABLE): $(USER_DIR_S)/main.o $(USER_DIR_S)/Verb.o $(USER_DIR_S)/Menu.o
-	g++ $(FLAGS) $(USER_DIR_S)/main.o $(USER_DIR_S)/Verb.o $(USER_DIR_S)/Menu.o -o $(EXECUTABLE)
+	g++ $(FLAGS) $^ -o $@
 
 $(USER_DIR_S)/main.o: src/main.cpp
-	g++ $(FLAGS) -c src/main.cpp -o $(USER_DIR_S)/main.o
+	g++ $(FLAGS) -c src/main.cpp -o $@
 
 $(USER_DIR_S)/Verb.o: src/Verb.cpp
-	g++ $(FLAGS) -c src/Verb.cpp -o $(USER_DIR_S)/Verb.o
+	g++ $(FLAGS) -c src/Verb.cpp -o $@
 
 $(USER_DIR_S)/Menu.o: src/Menu.cpp
-	g++ $(FLAGS) -c src/Menu.cpp -o $(USER_DIR_S)/Menu.o
+	g++ $(FLAGS) -c src/Menu.cpp -o $@
 
+$(TEST): $(USER_DIR_S)/Verb.o $(USER_DIR_S)/Menu.o $(USER_DIR_T)/Verb_unittest.o $(USER_DIR_T)/Menu_unittest.o $(USER_DIR_T)/gtest_main.a
+	g++ $(GFLAGS) $(LDFLAGS) -lpthread $^ -o $@
 
-$(TEST): $(USER_DIR_S)/Verb.o $(USER_DIR_S)/Menu.o $(USER_DIR_T)/Verb_unittest.o $(USER_DIR_T)/Menu_unittest.o
-	g++ $(FLAGS) $(LD_FLAGS) $(USER_DIR_S)/Verb.o $(USER_DIR_S)/Menu.o $(USER_DIR_T)/Verb_unittest.o $(USER_DIR_T)/Menu_unittest.o -o $(TEST)
+$(USER_DIR_T)/gtest_main.a: $(USER_DIR_T)/gtest-all.o $(USER_DIR_T)/gtest_main.o
+	$(AR) $(ARFLAGS) $@ $^
+
+$(USER_DIR_T)/gtest-all.o :
+	g++ -O2 $(GFLAGS) -I$(GTEST_DIR) $(LDFLAGS) -c \
+            $(GTEST_DIR)/src/gtest-all.cc -o $@
+
+$(USER_DIR_T)/gtest_main.o :
+	g++ -O2 $(GFLAGS) -I$(GTEST_DIR) $(LDFLAGS) -c \
+            $(GTEST_DIR)/src/gtest_main.cc -o $@
 
 $(USER_DIR_T)/Verb_unittest.o: test/Verb_unittest.cpp
-	g++ $(FLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/Verb_unittest.cpp -o $(USER_DIR_T)/Verb_unittest.o
+	g++ $(FLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/Verb_unittest.cpp -o $@
 
 $(USER_DIR_T)/Menu_unittest.o: test/Menu_unittest.cpp
-	g++ $(FLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/Menu_unittest.cpp -o $(USER_DIR_T)/Menu_unittest.o
+	g++ $(FLAGS) -I $(GOOGLE_TEST_INCLUDE) -I src -c test/Menu_unittest.cpp -o $@
+
+addDir:
+	mkdir -p bin/ build/src build/test/
+	./buildgtest.sh
 
 start:
 	./bin/program
