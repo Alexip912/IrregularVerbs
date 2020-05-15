@@ -4,27 +4,24 @@
 #include <iostream>
 #include <random>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-bool simple{}, participle{};
-std::string array_of_verbs[121][3];
-
-void read_from_file(const string& file_path)
+void read_from_file(
+        const string& file_path, vector<FormsOfVerb>& array_of_verbs)
 {
     ifstream file(file_path);
     for (auto& array_of_verb : array_of_verbs) {
-        for (int j = 0; j < 3; j++) {
-            getline(file, array_of_verb[j], ' ');
-            j++;
-            getline(file, array_of_verb[j], ' ');
-            j++;
-            getline(file, array_of_verb[j], '\n');
-        }
+        getline(file, array_of_verb.infinitive, ' ');
+        getline(file, array_of_verb.simple, ' ');
+        getline(file, array_of_verb.participle, '\n');
+        array_of_verb.simple_flag = true;
+        array_of_verb.participle_flag = true;
     }
 }
 
-void rand_verbs(int* array, const int& size)
+void rand_verbs(int* array, int size)
 {
     random_device rd;
     mt19937 g(rd());
@@ -39,29 +36,32 @@ void rand_verbs(int* array, const int& size)
     }
 }
 
-void message_right()
+void message_right(const FormsOfVerb& verb)
 {
-    if (simple && participle) {
+    if (verb.simple_flag && verb.participle_flag) {
         cout << "All required forms entered correctly.\n"
              << "Move on to the next.\n";
     }
 }
 
-void message_wrong(const int& index, const DataOfCurrentVerb& object)
+void message_wrong(const FormsOfVerb& verb)
 {
-    if (!simple && !participle) {
+    if (!verb.simple_flag && !verb.participle_flag) {
         cout << "You made the mistake in form Past Simple and Past Participle. "
                 "Right version: "
-             << array_of_verbs[index][1] << " and " << array_of_verbs[index][2]
+             << verb.simple << " and " << verb.participle
              << "\nMove on to the next.\n";
-    } else if (!simple || !participle) {
-        cout << "You made the mistake in form " << object.form
-             << ". Right version: " << object.word
+    } else if (!verb.simple_flag && verb.participle_flag) {
+        cout << "You made the mistake in form Past Simple. "
+             << "Right version: " << verb.simple << "\nMove on to the next.\n";
+    } else if (verb.simple_flag && !verb.participle_flag) {
+        cout << "You made the mistake in form Past Participle. "
+             << "Right version: " << verb.participle
              << "\nMove on to the next.\n";
     }
 }
 
-void print_form(const int& index)
+void print_form(int index)
 {
     if (index == 1) {
         cout << "Past Simple: ";
@@ -71,14 +71,14 @@ void print_form(const int& index)
     }
 }
 
-void print_random_verb(const int& index)
+void print_random_verb(const FormsOfVerb& verb)
 {
-    if (array_of_verbs[index][1] == "was") {
+    if (verb.simple == "was") {
         cout << "\nWrite in the singular\n";
-    } else if (array_of_verbs[index][1] == "were") {
+    } else if (verb.simple == "were") {
         cout << "\nWrite in the plural\n";
     }
-    cout << "\nYour verb: " << array_of_verbs[index][0];
+    cout << "\nYour verb: " << verb.infinitive;
     cout << "\nInput other form\n";
 }
 
@@ -87,7 +87,7 @@ bool check_verbs(const string& reference_verb, const string& user_verb)
     return reference_verb == user_verb;
 }
 
-int result(const int& number_of_verbs, const int& right_value)
+int result(int number_of_verbs, int right_value)
 {
     if (number_of_verbs <= 0) {
         return 0;
