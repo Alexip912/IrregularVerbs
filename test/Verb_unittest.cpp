@@ -8,12 +8,12 @@ TEST(READ, IsRead)
 {
     const auto verbs = read_from_file("res/verbs.txt");
     VerbForms forms;
-    forms.infinitive = "awake";
-    forms.simple = "awoke";
-    forms.participle = "awoken";
-    ASSERT_EQ(forms.infinitive, verbs[1].infinitive);
-    ASSERT_EQ(forms.simple, verbs[1].simple);
-    ASSERT_EQ(forms.participle, verbs[1].participle);
+    forms.infinitive = "arise";
+    forms.simple = "arose";
+    forms.participle = "arisen";
+    ASSERT_EQ(forms.infinitive, verbs[0].infinitive);
+    ASSERT_EQ(forms.simple, verbs[0].simple);
+    ASSERT_EQ(forms.participle, verbs[0].participle);
     forms.infinitive = "stand";
     forms.simple = "stood";
     forms.participle = "stood";
@@ -26,6 +26,12 @@ TEST(READ, IsRead)
     ASSERT_EQ(forms.infinitive, verbs[9].infinitive);
     ASSERT_EQ(forms.simple, verbs[9].simple);
     ASSERT_EQ(forms.participle, verbs[9].participle);
+    forms.infinitive = "write";
+    forms.simple = "wrote";
+    forms.participle = "written";
+    ASSERT_EQ(forms.infinitive, verbs[120].infinitive);
+    ASSERT_EQ(forms.simple, verbs[120].simple);
+    ASSERT_EQ(forms.participle, verbs[120].participle);
 }
 
 TEST(CHECK, IsRight)
