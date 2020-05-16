@@ -4,6 +4,18 @@
 
 using namespace std;
 
+TEST(READ, IsRead)
+{
+    const auto verbs = read_from_file("res/verbs.txt");
+    VerbForms forms;
+    forms.infinitive = "awake";
+    forms.simple = "awoke";
+    forms.participle = "awoken";
+    ASSERT_EQ(forms.infinitive, verbs[1].infinitive);
+    ASSERT_EQ(forms.simple, verbs[1].simple);
+    ASSERT_EQ(forms.participle, verbs[1].participle);
+}
+
 TEST(CHECK, IsRight)
 {
     const auto verbs = read_from_file("res/verbs.txt");
@@ -25,6 +37,12 @@ TEST(CHECK, IsRight)
     word = "wount";
     user_verbs.emplace_back(word);
     ASSERT_EQ(1, check_verbs(user_verbs, verbs[119]));
+    user_verbs.clear();
+    word = "clang";
+    user_verbs.emplace_back(word);
+    word = "clung";
+    user_verbs.emplace_back(word);
+    ASSERT_EQ(-1, check_verbs(user_verbs, verbs[21]));
 }
 
 TEST(CHECK, IsNotRight)
