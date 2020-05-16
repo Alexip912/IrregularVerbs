@@ -36,6 +36,18 @@ TEST(CHECK, IsNotRight)
     word = "was";
     user_verbs.emplace_back(word);
     ASSERT_EQ(0, check_verbs(user_verbs, verbs[2]));
+    user_verbs.clear();
+    word = ".";
+    user_verbs.emplace_back(word);
+    word = "132";
+    user_verbs.emplace_back(word);
+    ASSERT_EQ(0, check_verbs(user_verbs, verbs[3]));
+    user_verbs.clear();
+    word = "";
+    user_verbs.emplace_back(word);
+    word = "writt n";
+    user_verbs.emplace_back(word);
+    ASSERT_EQ(0, check_verbs(user_verbs, verbs[120]));
 }
 
 TEST(RESULT, IsResult)
