@@ -4,22 +4,19 @@
 #include <string>
 #include <vector>
 
-typedef struct {
+struct VerbForms {
     std::string infinitive;
     std::string simple;
     std::string participle;
-    bool simple_flag;
-    bool participle_flag;
-} FormsOfVerb;
+};
 
-void read_from_file(
-        const std::string& file_path, std::vector<FormsOfVerb>& array_of_verbs);
-void rand_verbs(int* array, int size);
-bool check_verbs(
-        const std::string& reference_verb, const std::string& user_verb);
+std::vector<VerbForms> read_from_file(const std::string& file_path);
+std::vector<int> rand_verbs(int size);
+int check_verbs(
+        const std::vector<std::string>& user_verbs, const VerbForms& reference);
 int result(int number_of_verbs, int right_value);
-void message_right(const FormsOfVerb& verb);
-void message_wrong(const FormsOfVerb& verb);
-void print_form(int index);
-void print_random_verb(const FormsOfVerb& verb);
+void accrual_of_points(int temp, int& right_value);
+void message_right(int result);
+void message_wrong(const VerbForms& verb, int result);
+void print_random_verb(const VerbForms& verb);
 #endif
