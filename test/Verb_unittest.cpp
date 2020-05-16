@@ -4,6 +4,17 @@
 
 using namespace std;
 
+TEST(CHECK, IsRight)
+{
+    const auto verbs = read_from_file("res/verbs.txt");
+    vector<string> user_verbs;
+    string word = "was";
+    user_verbs.emplace_back(word);
+    word = "been";
+    user_verbs.emplace_back(word);
+    ASSERT_EQ(2, check_verbs(user_verbs, verbs[2]));
+}
+
 
 TEST(RESULT, IsResult)
 {
