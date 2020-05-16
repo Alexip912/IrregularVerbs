@@ -14,6 +14,18 @@ TEST(READ, IsRead)
     ASSERT_EQ(forms.infinitive, verbs[1].infinitive);
     ASSERT_EQ(forms.simple, verbs[1].simple);
     ASSERT_EQ(forms.participle, verbs[1].participle);
+    forms.infinitive = "stand";
+    forms.simple = "stood";
+    forms.participle = "stood";
+    ASSERT_EQ(forms.infinitive, verbs[100].infinitive);
+    ASSERT_EQ(forms.simple, verbs[100].simple);
+    ASSERT_EQ(forms.participle, verbs[100].participle);
+    forms.infinitive = "bet";
+    forms.simple = "bet";
+    forms.participle = "bet";
+    ASSERT_EQ(forms.infinitive, verbs[9].infinitive);
+    ASSERT_EQ(forms.simple, verbs[9].simple);
+    ASSERT_EQ(forms.participle, verbs[9].participle);
 }
 
 TEST(CHECK, IsRight)
