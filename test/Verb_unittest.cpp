@@ -112,6 +112,17 @@ TEST(POINTS, IsPoint)
     temp = 2;
     accrual_of_points(temp, right_value);
     ASSERT_EQ(4, right_value);
+    temp = 2;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(6, right_value);
+    temp = -1;
+    accrual_of_points(temp, right_value);
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(8, right_value);
+    ASSERT_EQ(-1, temp);
+    temp = 1;
+    right_value = 100;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(101, right_value);
 }
-
 
