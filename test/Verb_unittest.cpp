@@ -100,6 +100,24 @@ TEST(RESULT, IsNotResult)
     ASSERT_EQ(0, result(-25, 7));
 }
 
+TEST(POINTS, IsNotPoint)
+{
+    int temp = 0;
+    int right_value = 5;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(5, right_value);
+    temp = 123;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(5, right_value);
+    right_value++;
+    temp = -2;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(6, right_value);
+    temp = 3;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(6, right_value);
+}
+
 TEST(POINTS, IsPoint)
 {
     int temp = -1;
@@ -120,9 +138,6 @@ TEST(POINTS, IsPoint)
     accrual_of_points(temp, right_value);
     ASSERT_EQ(8, right_value);
     ASSERT_EQ(-1, temp);
-    temp = 1;
-    right_value = 100;
-    accrual_of_points(temp, right_value);
-    ASSERT_EQ(101, right_value);
 }
+
 
