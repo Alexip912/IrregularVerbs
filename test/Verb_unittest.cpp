@@ -99,3 +99,19 @@ TEST(RESULT, IsNotResult)
     ASSERT_EQ(0, result(-5, 2));
     ASSERT_EQ(0, result(-25, 7));
 }
+
+TEST(POINTS, IsPoint)
+{
+    int temp = -1;
+    int right_value = 0;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(1, right_value);
+    temp = 1;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(2, right_value);
+    temp = 2;
+    accrual_of_points(temp, right_value);
+    ASSERT_EQ(4, right_value);
+}
+
+
