@@ -139,5 +139,3 @@ TEST(POINTS, IsPoint)
     ASSERT_EQ(8, right_value);
     ASSERT_EQ(-1, temp);
 }
-
-
