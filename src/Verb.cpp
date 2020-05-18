@@ -80,22 +80,24 @@ void message_right(int result)
              << "\x1b[30mMove on to the next.\n";
     }
 }
+
 void message_wrong(const VerbForms& verb, int result)
 {
     if (result == 0) {
         cout << "You made the mistake in form Past Simple and Past Participle. "
-                "Right version: "
-             << verb.simple << " and " << verb.participle
-             << "\nMove on to the next.\n";
+                "Right version: \x1b[31m"
+             << verb.simple << "\x1b[30m and \x1b[31m" << verb.participle
+             << "\n\x1b[30mMove on to the next.\n";
     } else if (result == -1) {
         cout << "You made the mistake in form Past Simple. "
-             << "Right version: " << verb.simple << "\nMove on to the next.\n";
+             << "Right version: \x1b[31m" << verb.simple << "\n\x1b[30mMove on to the next.\n";
     } else if (result == 1) {
         cout << "You made the mistake in form Past Participle. "
-             << "Right version: " << verb.participle
-             << "\nMove on to the next.\n";
+             << "Right version: \x1b[31m" << verb.participle
+             << "\n\x1b[30mMove on to the next.\n";
     }
 }
+
 
 void print_random_verb(const VerbForms& verb)
 {
