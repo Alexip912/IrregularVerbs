@@ -10,16 +10,19 @@ int join()
 {
     bool flag = false;
     string choice;
-    cout << "Welcome to IrregularVerbs\n";
-    cout << "It's time to test your knowledge of irregular verbs\n";
+    cout << "\n=======================================================\n";
+    cout << "| Welcome to IrregularVerbs                           |\n";
+    cout << "| It's time to test your knowledge of irregular verbs |\n";
     while (!flag) {
-        cout << "\n1.Begin to test your knowledge\n";
-        cout << "2.About program's\n";
-        cout << "3.Exit\n";
+        cout << "=======================================================\n";
+        cout << "| 1.Begin to test your knowledge                      |\n";
+        cout << "| 2.About program's                                   |\n";
+        cout << "| 3.Exit                                              |\n";
+        cout << "=======================================================\n";
         cout << "\nYour choice: ";
         cin >> choice;
         if (!is_valid_choice(choice)) {
-            cout << "\nIncorrect input!\n";
+            cout << "\n\tIncorrect input!\n";
             continue;
         }
         switch (choice[0]) {
