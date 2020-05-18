@@ -107,3 +107,43 @@ void print_random_verb(const VerbForms& verb)
     cout << "\nYour verb: " << verb.infinitive;
     cout << "\nInput other form\n";
 }
+
+void message_mark(int percent)
+{
+    int mark = 0;
+    cout << "\n=======================================================\n";
+
+    if (percent < 50) {
+        mark = 2;
+        cout << "| percentage of correct answers: " << percent << setw(22)
+             << " |\n";
+        cout << "| your mark: " << mark << setw(42) << "|\n";
+        cout << "| do not worry, next time you will " << setw(20) << "|";
+    }
+
+    if (percent > 49 && percent < 75) {
+        mark = 3;
+        cout << "| percentage of correct answers: " << percent << setw(21)
+             << " |\n";
+        cout << "| your mark: " << mark << setw(42) << "|\n";
+        cout << "| not bad, but i'm sure you can do better " << setw(13) << "|";
+    }
+
+    if (percent > 74 && percent < 85) {
+        mark = 4;
+        cout << "| percentage of correct answers: " << percent << setw(21)
+             << " |\n";
+        cout << "| your mark: " << mark << setw(42) << "|\n";
+        cout << "| your knowledge is high enough" << setw(24) << "|";
+    }
+
+    if (percent > 84) {
+        mark = 5;
+        cout << "| percentage of correct answers: " << percent << setw(21)
+             << " |\n";
+        cout << "| your mark: " << mark << setw(42) << "|\n";
+        cout << "| excellent result " << setw(36) << "|";
+    }
+
+    cout << "\n=======================================================\n";
+}
