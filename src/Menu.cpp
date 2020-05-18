@@ -104,7 +104,9 @@ void start()
             message_right(temp);
             message_wrong(verbs[verb_indexes[i]], temp);
         }
-        cout << "\nYour result: " << result(point, right_value) << "%\n";
+        int percent;
+        percent = result(point, right_value);
+        message_mark(percent);
     }
 }
 
