@@ -1,5 +1,6 @@
 #include "header/Verb.h"
 #include <algorithm>
+#include <iomanip>
 #include <fstream>
 #include <iostream>
 #include <random>
@@ -75,11 +76,10 @@ void accrual_of_points(int temp, int& right_value)
 void message_right(int result)
 {
     if (result == 2) {
-        cout << "All required forms entered correctly.\n"
-             << "Move on to the next.\n";
+        cout << "All required forms entered \x1b[32mcorrectly.\n"
+             << "\x1b[30mMove on to the next.\n";
     }
 }
-
 void message_wrong(const VerbForms& verb, int result)
 {
     if (result == 0) {
