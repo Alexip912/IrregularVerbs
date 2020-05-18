@@ -19,4 +19,5 @@ void accrual_of_points(int temp, int& right_value);
 void message_right(int result);
 void message_wrong(const VerbForms& verb, int result);
 void print_random_verb(const VerbForms& verb);
+void message_mark(int percent);
 #endif
