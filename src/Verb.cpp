@@ -75,9 +75,10 @@ void accrual_of_points(int temp, int& right_value)
 
 void message_right(int result)
 {
+    cout << "\n-------------------------------------------------------\n";    
     if (result == 2) {
         cout << "All required forms entered \x1b[32mcorrectly.\n"
-             << "\x1b[30mMove on to the next.\n";
+             << "\x1b[30mMove on to the next.";
     }
 }
 
@@ -87,15 +88,17 @@ void message_wrong(const VerbForms& verb, int result)
         cout << "You made the mistake in form Past Simple and Past Participle. "
                 "Right version: \x1b[31m"
              << verb.simple << "\x1b[30m and \x1b[31m" << verb.participle
-             << "\n\x1b[30mMove on to the next.\n";
+             << "\n\x1b[30mMove on to the next.";
     } else if (result == -1) {
         cout << "You made the mistake in form Past Simple. "
-             << "Right version: \x1b[31m" << verb.simple << "\n\x1b[30mMove on to the next.\n";
+             << "Right version: \x1b[31m" << verb.simple 
+             << "\n\x1b[30mMove on to the next.";
     } else if (result == 1) {
         cout << "You made the mistake in form Past Participle. "
              << "Right version: \x1b[31m" << verb.participle
-             << "\n\x1b[30mMove on to the next.\n";
+             << "\n\x1b[30mMove on to the next.";
     }
+    cout << "\n-------------------------------------------------------\n";
 }
 
 
@@ -115,7 +118,15 @@ void message_mark(int percent)
     int mark = 0;
     cout << "\n=======================================================\n";
 
-    if (percent < 50) {
+    if (percent == 0) {
+        mark = 1;
+        cout << "| Percentage of correct answers: \x1b[31m  " << percent << setw(25)
+             << "\x1b[30m |\n";
+        cout << "| Your mark: " << mark << setw(42) << "|\n";
+        cout << "| You need to repeat the verbs before the next attempt" << "|";
+    }
+
+    if (percent < 50 && percent != 0) {
         mark = 2;
         cout << "| Percentage of correct answers: \x1b[31m " << percent << setw(24)
              << "\x1b[30m |\n";
