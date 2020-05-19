@@ -117,40 +117,40 @@ void message_mark(int percent)
 
     if (percent < 50) {
         mark = 2;
-        cout << "| Percentage of correct answers: " << percent << setw(22)
-             << " |\n";
+        cout << "| Percentage of correct answers: \x1b[31m " << percent << setw(24)
+             << "\x1b[30m |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Don't worry, next time you will able to. " << setw(12) << "|";
     }
 
     if (percent > 49 && percent < 75) {
         mark = 3;
-        cout << "| Percentage of correct answers: " << percent << setw(21)
-             << " |\n";
+        cout << "| Percentage of correct answers: \x1b[31m "
+        << percent << setw(25) << "\x1b[30m|\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Not bad, but i'm sure you can do better." << setw(13) << "|";
     }
 
     if (percent > 74 && percent < 85) {
         mark = 4;
-        cout << "| Percentage of correct answers: " << percent << setw(21)
-             << " |\n";
+        cout << "| Percentage of correct answers: \x1b[33m " << percent << setw(25)
+             << "\x1b[30m|\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Your knowledge is high enough." << setw(23) << "|";
     }
 
     if (percent > 84 && percent != 100) {
         mark = 5;
-        cout << "| Percentage of correct answers: " << percent << setw(21)
-             << " |\n";
+        cout << "| Percentage of correct answers:\x1b[32m " 
+        << percent << "\x1b[30m" << setw(21) << " |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Such excellent result! " << setw(30) << "|";
     }
     
-    if (percent > 84) {
+    if (percent == 100) {
         mark = 5;
-        cout << "| Percentage of correct answers: " << percent << setw(20)
-             << " |\n";
+        cout << "| Percentage of correct answers: \x1b[32m " << percent << setw(24)
+             << " \x1b[30m|\n";
         cout << "| Your mark: " << mark << "+" << setw(41) << "|\n";
         cout << "| Such excellent result! " << setw(30) << "|";
     }
