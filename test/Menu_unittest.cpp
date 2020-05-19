@@ -32,7 +32,7 @@ TEST(NUMBER, IsNumber)
 
 TEST(NUMBER, IsNotNumber)
 {
-    ASSERT_EQ(0, is_valid_number(""));
+    ASSERT_EQ(0, is_valid_number(" "));
     ASSERT_EQ(0, is_valid_number("-1"));
     ASSERT_EQ(0, is_valid_number("fd"));
     ASSERT_EQ(0, is_valid_number("4gfjf"));
@@ -63,7 +63,7 @@ TEST(STONUM, IsNotNull)
 
 TEST(STONUM, IsNull)
 {
-    ASSERT_EQ(0, string_to_number(""));
+    ASSERT_EQ(0, string_to_number(" "));
     ASSERT_EQ(0, string_to_number("-1"));
     ASSERT_EQ(0, string_to_number("fd"));
     ASSERT_EQ(0, string_to_number("4gfjf"));

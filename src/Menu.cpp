@@ -10,16 +10,19 @@ int join()
 {
     bool flag = false;
     string choice;
-    cout << "Welcome to IrregularVerbs\n";
-    cout << "It's time to test your knowledge of irregular verbs\n";
+    cout << "\n=======================================================\n";
+    cout << "| Welcome to IrregularVerbs                           |\n";
+    cout << "| It's time to test your knowledge of irregular verbs |\n";
     while (!flag) {
-        cout << "\n1.Begin to test your knowledge\n";
-        cout << "2.About program's\n";
-        cout << "3.Exit\n";
+        cout << "=======================================================\n";
+        cout << "| 1.Begin to test your knowledge                      |\n";
+        cout << "| 2.About program's                                   |\n";
+        cout << "| 3.Exit                                              |\n";
+        cout << "=======================================================\n";
         cout << "\nYour choice: ";
         cin >> choice;
         if (!is_valid_choice(choice)) {
-            cout << "\nIncorrect input!\n";
+            cout << "\n\tIncorrect input!\n";
             continue;
         }
         switch (choice[0]) {
@@ -54,9 +57,6 @@ bool is_valid_choice(const string& choice)
 
 bool is_valid_number(const string& number_of_verbs)
 {
-    if (number_of_verbs == "") {
-        return false;
-    }
     for (char number_of_verb : number_of_verbs) {
         if (!isdigit(number_of_verb)) {
             return false;
@@ -85,50 +85,41 @@ void start()
         cout << "\nIncorrect input!\n";
     } else {
         int right_value = 0;
-        vector<FormsOfVerb> array_of_verbs;
-        array_of_verbs.resize(121);
-        read_from_file(FILE_VERBS, array_of_verbs);
-        int array_of_number[point];
-        rand_verbs(array_of_number, point);
-        string user_verb;
+        const auto verbs = read_from_file(FILE_VERBS);
+        const auto verb_indexes = rand_verbs(verbs.size());
+        vector<string> user_verbs;
+        string word;
+        int temp;
         for (int i = 0; i < point; ++i) {
-            print_random_verb(array_of_verbs[array_of_number[i]]);
-            print_form(1);
-            cin >> user_verb;
-            if (check_verbs(
-                        array_of_verbs[array_of_number[i]].simple, user_verb)) {
-                ++right_value;
-            } else {
-                array_of_verbs[array_of_number[i]].simple_flag = false;
-            }
-            print_form(2);
-            cin >> user_verb;
-            if (check_verbs(
-                        array_of_verbs[array_of_number[i]].participle,
-                        user_verb)) {
-                ++right_value;
-            } else {
-                array_of_verbs[array_of_number[i]].participle_flag = false;
-            }
-            message_right(array_of_verbs[array_of_number[i]]);
-            message_wrong(array_of_verbs[array_of_number[i]]);
+            user_verbs.clear();
+            print_random_verb(verbs[verb_indexes[i]]);
+            cout << "Past Simple: ";
+            cin >> word;
+            user_verbs.emplace_back(word);
+            cout << "Past Participle: ";
+            cin >> word;
+            user_verbs.emplace_back(word);
+            temp = check_verbs(user_verbs, verbs[verb_indexes[i]]);
+            accrual_of_points(temp, right_value);
+            message_right(temp);
+            message_wrong(verbs[verb_indexes[i]], temp);
         }
-        cout << "\nYour result: " << result(point, right_value) << "%\n";
+        int percent;
+        percent = result(point, right_value);
+        message_mark(percent);
     }
 }
 
 bool check_file(const string& file)
 {
-    ifstream fin;
-    fin.open(file);
+    ifstream fin(file);
     return fin.is_open();
 }
 
 void about(const string& file)
 {
     cout << "\n";
-    ifstream fin;
-    fin.open(file);
+    ifstream fin(file);
     char ch;
     while (fin.get(ch)) {
         cout << ch;
