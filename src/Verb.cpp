@@ -1,7 +1,7 @@
 #include "header/Verb.h"
 #include <algorithm>
-#include <iomanip>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <random>
 #include <string>
@@ -75,7 +75,7 @@ void accrual_of_points(int temp, int& right_value)
 
 void message_right(int result)
 {
-    cout << "\n-------------------------------------------------------\n";    
+    cout << "\n-------------------------------------------------------\n";
     if (result == 2) {
         cout << "All required forms entered \x1b[32mcorrectly.\n"
              << "\x1b[30mMove on to the next.";
@@ -91,7 +91,7 @@ void message_wrong(const VerbForms& verb, int result)
              << "\n\x1b[30mMove on to the next.";
     } else if (result == -1) {
         cout << "You made the mistake in form Past Simple. "
-             << "Right version: \x1b[31m" << verb.simple 
+             << "Right version: \x1b[31m" << verb.simple
              << "\n\x1b[30mMove on to the next.";
     } else if (result == 1) {
         cout << "You made the mistake in form Past Participle. "
@@ -100,7 +100,6 @@ void message_wrong(const VerbForms& verb, int result)
     }
     cout << "\n-------------------------------------------------------\n";
 }
-
 
 void print_random_verb(const VerbForms& verb)
 {
@@ -120,48 +119,50 @@ void message_mark(int percent)
 
     if (percent == 0) {
         mark = 1;
-        cout << "| Percentage of correct answers: \x1b[31m  " << percent << setw(25)
-             << "\x1b[30m |\n";
+        cout << "| Percentage of correct answers: \x1b[31m  " << percent
+             << setw(25) << "\x1b[30m |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
-        cout << "| You need to repeat the verbs before the next attempt" << "|";
+        cout << "| You need to repeat the verbs before the next attempt"
+             << "|";
     }
 
     if (percent < 50 && percent != 0) {
         mark = 2;
-        cout << "| Percentage of correct answers: \x1b[31m " << percent << setw(24)
-             << "\x1b[30m |\n";
+        cout << "| Percentage of correct answers: \x1b[31m " << percent
+             << setw(24) << "\x1b[30m |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
-        cout << "| Don't worry, next time you will able to. " << setw(12) << "|";
+        cout << "| Don't worry, next time you will able to. " << setw(12)
+             << "|";
     }
 
     if (percent > 49 && percent < 75) {
         mark = 3;
-        cout << "| Percentage of correct answers: \x1b[31m "
-        << percent << setw(25) << "\x1b[30m|\n";
+        cout << "| Percentage of correct answers: \x1b[31m " << percent
+             << setw(25) << "\x1b[30m|\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Not bad, but i'm sure you can do better." << setw(13) << "|";
     }
 
     if (percent > 74 && percent < 85) {
         mark = 4;
-        cout << "| Percentage of correct answers: \x1b[33m " << percent << setw(25)
-             << "\x1b[30m|\n";
+        cout << "| Percentage of correct answers: \x1b[33m " << percent
+             << setw(25) << "\x1b[30m|\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Your knowledge is high enough." << setw(23) << "|";
     }
 
     if (percent > 84 && percent != 100) {
         mark = 5;
-        cout << "| Percentage of correct answers:\x1b[32m " 
-        << percent << "\x1b[30m" << setw(21) << " |\n";
+        cout << "| Percentage of correct answers:\x1b[32m " << percent
+             << "\x1b[30m" << setw(21) << " |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Such excellent result! " << setw(30) << "|";
     }
-    
+
     if (percent == 100) {
         mark = 5;
-        cout << "| Percentage of correct answers: \x1b[32m " << percent << setw(24)
-             << " \x1b[30m|\n";
+        cout << "| Percentage of correct answers: \x1b[32m " << percent
+             << setw(24) << " \x1b[30m|\n";
         cout << "| Your mark: " << mark << "+" << setw(41) << "|\n";
         cout << "| Such excellent result! " << setw(30) << "|";
     }
