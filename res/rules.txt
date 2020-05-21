@@ -1,0 +1,16 @@
+The infinitive form of the verb will be displayed to you and you will be offered to enter Past Simple form, you will have to enter your answer and press 'Enter' button.
+Then you will be offered to input remaining Past Parciple form. Repeat actions from Past Simple form.
+After that program will display your mistakes or inform you that all correct.
+
+Example of program work:
+
+    Your verb: win
+    Input other form
+    Past Simple: won
+    Past Participle: won
+
+    -------------------------------------------------------
+    All required forms entered correctly.
+    Move on to the next.
+    -------------------------------------------------------
+
