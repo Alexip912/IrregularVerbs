@@ -3,6 +3,7 @@
 
 #define FILE_VERBS "res/verbs.txt"
 #define FILE_ABOUT "res/about.txt"
+#define FILE_RULES "res/rules.txt"
 
 #include <string>
 

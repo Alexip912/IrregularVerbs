@@ -17,7 +17,8 @@ int join()
         cout << "=======================================================\n";
         cout << "| 1.Begin to test your knowledge                      |\n";
         cout << "| 2.About program's                                   |\n";
-        cout << "| 3.Exit                                              |\n";
+        cout << "| 3.Rules and example of work                         |\n";
+        cout << "| 4.Exit                                              |\n";
         cout << "=======================================================\n";
         cout << "\nYour choice: ";
         cin >> choice;
@@ -41,6 +42,13 @@ int join()
             }
             break;
         case '3':
+            if (!check_file(FILE_RULES)) {
+                cout << "\n\tFile missing\n";
+            } else {
+                about(FILE_RULES);
+            }
+            break;
+        case '4':
             flag = true;
         }
     }
@@ -52,7 +60,7 @@ bool is_valid_choice(const string& choice)
     if (choice.length() != 1) {
         return false;
     }
-    return !(choice[0] < '1' || choice[0] > '3');
+    return !(choice[0] < '1' || choice[0] > '4');
 }
 
 bool is_valid_number(const string& number_of_verbs)
@@ -126,3 +134,4 @@ void about(const string& file)
     }
     fin.close();
 }
+
