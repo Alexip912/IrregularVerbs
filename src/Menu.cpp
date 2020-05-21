@@ -38,14 +38,14 @@ int join()
             if (!check_file(FILE_ABOUT)) {
                 cout << "\n\tFile missing\n";
             } else {
-                about(FILE_ABOUT);
+                txt_output(FILE_ABOUT);
             }
             break;
         case '3':
             if (!check_file(FILE_RULES)) {
                 cout << "\n\tFile missing\n";
             } else {
-                about(FILE_RULES);
+                txt_output(FILE_RULES);
             }
             break;
         case '4':
@@ -124,7 +124,7 @@ bool check_file(const string& file)
     return fin.is_open();
 }
 
-void about(const string& file)
+void txt_output(const string& file)
 {
     cout << "\n";
     ifstream fin(file);
@@ -134,4 +134,3 @@ void about(const string& file)
     }
     fin.close();
 }
-

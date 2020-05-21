@@ -13,6 +13,6 @@ void start();
 bool is_valid_number(const std::string& number_of_verbs);
 int string_to_number(const std::string& number_of_verbs);
 bool check_file(const std::string& file);
-void about(const std::string& file);
+void txt_output(const std::string& file);
 
 #endif
