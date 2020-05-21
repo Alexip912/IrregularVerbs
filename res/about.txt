@@ -1,10 +1,10 @@
 Hi, you are welcomed by an irregular verb simulator.
 
-The infinitive form of the verb will be displayed to you, and you will have to enter the two remaining forms of the verb
-after which you will see the words in which you made a mistake or a message stating that everything is correct.
+Here is a fun irregular verbs game to help students practice the spelling of past simple and past participle irregular verbs.
+They can be used for organizing a lesson in a computer class, or for distance learning methods - so that students train at home.
 
-After entering all forms of verbs, you get the result of your attempt as a percentage.
+The infinitive form of the verb will be displayed to you, and you will have to enter the two remaining forms of the verb.
 
-Enter all forms of the verb strictly from the lowercase letters of the English alphabet.
 
-Course project called "IrregularVerbs", authors Petrov Daniil, Vladislav Fadin and Alexey Shkuratov.
+Course project called "IrregularVerbs" in the discipline "Theory of Software Development", 
+authors Petrov Daniil, Vladislav Fadin and Alexey Shkuratov.
