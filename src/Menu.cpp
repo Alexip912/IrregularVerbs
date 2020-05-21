@@ -82,7 +82,7 @@ void start()
     cin >> number_of_verbs;
     int point = string_to_number(number_of_verbs);
     if (point == 0) {
-        cout << "\nIncorrect input!\n";
+        cout << "\n\tIncorrect input!\n";
     } else {
         int right_value = 0;
         const auto verbs = read_from_file(FILE_VERBS);

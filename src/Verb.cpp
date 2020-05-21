@@ -135,7 +135,7 @@ void message_mark(int percent)
              << "|";
     }
 
-    if (percent > 49 && percent < 75) {
+    if (percent > 49 && percent < 69) {
         mark = 3;
         cout << "| Percentage of correct answers: \x1b[31m" << percent
              << setw(25) << "\x1b[0m|\n";
@@ -143,7 +143,7 @@ void message_mark(int percent)
         cout << "| Not bad, but i'm sure you can do better." << setw(13) << "|";
     }
 
-    if (percent > 74 && percent < 85) {
+    if (percent > 70 && percent < 85) {
         mark = 4;
         cout << "| Percentage of correct answers: \x1b[33m" << percent
              << setw(25) << "\x1b[0m|\n";
