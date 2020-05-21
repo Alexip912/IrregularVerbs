@@ -17,7 +17,8 @@ int join()
         cout << "=======================================================\n";
         cout << "| 1.Begin to test your knowledge                      |\n";
         cout << "| 2.About program's                                   |\n";
-        cout << "| 3.Exit                                              |\n";
+        cout << "| 3.Rules and example of work                         |\n";
+        cout << "| 4.Exit                                              |\n";
         cout << "=======================================================\n";
         cout << "\nYour choice: ";
         cin >> choice;
@@ -37,10 +38,17 @@ int join()
             if (!check_file(FILE_ABOUT)) {
                 cout << "\n\tFile missing\n";
             } else {
-                about(FILE_ABOUT);
+                txt_output(FILE_ABOUT);
             }
             break;
         case '3':
+            if (!check_file(FILE_RULES)) {
+                cout << "\n\tFile missing\n";
+            } else {
+                txt_output(FILE_RULES);
+            }
+            break;
+        case '4':
             flag = true;
         }
     }
@@ -52,7 +60,7 @@ bool is_valid_choice(const string& choice)
     if (choice.length() != 1) {
         return false;
     }
-    return !(choice[0] < '1' || choice[0] > '3');
+    return !(choice[0] < '1' || choice[0] > '4');
 }
 
 bool is_valid_number(const string& number_of_verbs)
@@ -82,7 +90,7 @@ void start()
     cin >> number_of_verbs;
     int point = string_to_number(number_of_verbs);
     if (point == 0) {
-        cout << "\nIncorrect input!\n";
+        cout << "\n\tIncorrect input!\n";
     } else {
         int right_value = 0;
         const auto verbs = read_from_file(FILE_VERBS);
@@ -116,7 +124,7 @@ bool check_file(const string& file)
     return fin.is_open();
 }
 
-void about(const string& file)
+void txt_output(const string& file)
 {
     cout << "\n";
     ifstream fin(file);

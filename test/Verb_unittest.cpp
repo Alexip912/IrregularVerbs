@@ -84,6 +84,12 @@ TEST(CHECK, IsNotRight)
     word = "writt n";
     user_verbs.emplace_back(word);
     ASSERT_EQ(0, check_verbs(user_verbs, verbs[120]));
+    user_verbs.clear();
+    word = "mADE";
+    user_verbs.emplace_back(word);
+    word = "MADE";
+    user_verbs.emplace_back(word);
+    ASSERT_EQ(0, check_verbs(user_verbs, verbs[65]));
 }
 
 TEST(RESULT, IsResult)

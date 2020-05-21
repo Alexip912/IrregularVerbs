@@ -78,7 +78,7 @@ void message_right(int result)
     cout << "\n-------------------------------------------------------\n";
     if (result == 2) {
         cout << "All required forms entered \x1b[32mcorrectly.\n"
-             << "\x1b[30mMove on to the next.";
+             << "\x1b[0mMove on to the next.";
     }
 }
 
@@ -87,16 +87,16 @@ void message_wrong(const VerbForms& verb, int result)
     if (result == 0) {
         cout << "You made the mistake in form Past Simple and Past Participle. "
                 "Right version: \x1b[31m"
-             << verb.simple << "\x1b[30m and \x1b[31m" << verb.participle
-             << "\n\x1b[30mMove on to the next.";
+             << verb.simple << "\x1b[0m and \x1b[31m" << verb.participle
+             << "\n\x1b[0mMove on to the next.";
     } else if (result == -1) {
         cout << "You made the mistake in form Past Simple. "
              << "Right version: \x1b[31m" << verb.simple
-             << "\n\x1b[30mMove on to the next.";
+             << "\n\x1b[0mMove on to the next.";
     } else if (result == 1) {
         cout << "You made the mistake in form Past Participle. "
              << "Right version: \x1b[31m" << verb.participle
-             << "\n\x1b[30mMove on to the next.";
+             << "\n\x1b[0mMove on to the next.";
     }
     cout << "\n-------------------------------------------------------\n";
 }
@@ -119,8 +119,8 @@ void message_mark(int percent)
 
     if (percent == 0) {
         mark = 1;
-        cout << "| Percentage of correct answers: \x1b[31m  " << percent
-             << setw(25) << "\x1b[30m |\n";
+        cout << "| Percentage of correct answers: \x1b[31m " << percent
+             << setw(25) << "\x1b[0m |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| You need to repeat the verbs before the next attempt"
              << "|";
@@ -129,24 +129,24 @@ void message_mark(int percent)
     if (percent < 50 && percent != 0) {
         mark = 2;
         cout << "| Percentage of correct answers: \x1b[31m " << percent
-             << setw(24) << "\x1b[30m |\n";
+             << setw(24) << "\x1b[0m |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Don't worry, next time you will able to. " << setw(12)
              << "|";
     }
 
-    if (percent > 49 && percent < 75) {
+    if (percent > 49 && percent < 69) {
         mark = 3;
-        cout << "| Percentage of correct answers: \x1b[31m " << percent
-             << setw(25) << "\x1b[30m|\n";
+        cout << "| Percentage of correct answers: \x1b[31m" << percent
+             << setw(25) << "\x1b[0m|\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Not bad, but i'm sure you can do better." << setw(13) << "|";
     }
 
-    if (percent > 74 && percent < 85) {
+    if (percent > 70 && percent < 85) {
         mark = 4;
-        cout << "| Percentage of correct answers: \x1b[33m " << percent
-             << setw(25) << "\x1b[30m|\n";
+        cout << "| Percentage of correct answers: \x1b[33m" << percent
+             << setw(25) << "\x1b[0m|\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Your knowledge is high enough." << setw(23) << "|";
     }
@@ -154,15 +154,15 @@ void message_mark(int percent)
     if (percent > 84 && percent != 100) {
         mark = 5;
         cout << "| Percentage of correct answers:\x1b[32m " << percent
-             << "\x1b[30m" << setw(21) << " |\n";
+             << "\x1b[0m" << setw(21) << " |\n";
         cout << "| Your mark: " << mark << setw(42) << "|\n";
         cout << "| Such excellent result! " << setw(30) << "|";
     }
 
     if (percent == 100) {
         mark = 5;
-        cout << "| Percentage of correct answers: \x1b[32m " << percent
-             << setw(24) << " \x1b[30m|\n";
+        cout << "| Percentage of correct answers: \x1b[32m" << percent
+             << setw(24) << " \x1b[0m|\n";
         cout << "| Your mark: " << mark << "+" << setw(41) << "|\n";
         cout << "| Such excellent result! " << setw(30) << "|";
     }

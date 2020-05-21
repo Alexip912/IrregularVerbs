@@ -14,10 +14,6 @@ GFLAGS += -isystem $(GTEST_DIR)/include
 
 LDFLAGS += -Wall -Wextra -pthread --std=c++17
 
-GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
-                $(GTEST_DIR)/include/gtest/internal/*.h
-GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
-
 all: addDir $(EXECUTABLE) $(TEST)
 
 $(EXECUTABLE): $(USER_DIR_S)/main.o $(USER_DIR_S)/Verb.o $(USER_DIR_S)/Menu.o
@@ -66,3 +62,4 @@ clean:
 	rm -rf $(USER_DIR_S)/*.o
 	rm -rf $(USER_DIR_T)/*.o
 	rm -rf bin/*
+	rm -rf thirdparty
