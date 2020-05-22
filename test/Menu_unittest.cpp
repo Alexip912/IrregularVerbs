@@ -9,6 +9,7 @@ TEST(CHOICE, IsChoice)
     ASSERT_EQ(1, is_valid_choice("1"));
     ASSERT_EQ(1, is_valid_choice("2"));
     ASSERT_EQ(1, is_valid_choice("3"));
+    ASSERT_EQ(1, is_valid_choice("4"));
 }
 
 TEST(CHOICE, IsNotChoice)
@@ -44,6 +45,7 @@ TEST(CHECK_FILE, IsRead)
 {
     ASSERT_EQ(1, check_file("res/about.txt"));
     ASSERT_EQ(1, check_file("res/verbs.txt"));
+    ASSERT_EQ(1, check_file("res/rules.txt"));
 }
 
 TEST(CHECK_FILE, IsNotRead)

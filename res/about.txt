@@ -6,5 +6,5 @@ They can be used for organizing a lesson in a computer class, or for distance le
 The infinitive form of the verb will be displayed to you, and you will have to enter the two remaining forms of the verb.
 
 
-Course project called "IrregularVerbs" in the discipline "Theory of Software Development", 
+Course project called "IrregularVerbs" in the discipline "Technologies of Software Development", 
 authors Petrov Daniil, Vladislav Fadin and Alexey Shkuratov.
